@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --primary-blue: #4087f3;
+    --highlight-blue: #092952;
+    --light-orange: #fcc3a9;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body{
+    background-color: black;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header{
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--highlight-blue);
+    color: rgb(255, 255, 255);
+    border-bottom: 2px solid white;
+}
+
+.content{
+    min-height: 95vh;
+    min-width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.sidebar{
+    border-right: 2px solid white;
+
+    flex: 1;
+}
+
+.sidebar-title, .main-content-title{
+    padding: 0.6rem;
+    background-color: #1d4a85;
+    border-bottom: 2px solid white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-title h2, .main-content-title h2{
+    width: 80%;
+}
+
+.sidebar-title button:hover, .main-content-title button:hover{
+    background-color: #fd9e72;
+}
+
+.sidebar-title button:active, .main-content-title button:active{
+    background-color: #000000;
+    color: white;
+}
+
+.project-list{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0 2rem 4rem;
+}
+
+.project-list li{
+    list-style: none;
+    margin: 2rem;
+    font-size: 1.2rem;
+    transition: color 0.15s ease-in;
+}
+
+.project-list li:hover{
+    color: var(--primary-blue);
+}
+
+.project-list li:active{
+    color: var(--primary-blue);
+}
+
+.add-button{
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--light-orange);
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.main-content{
+    flex: 3;
+}
+
+.main-content-card-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content-card{
+    background-color: rgb(40, 38, 38);
+    width: 95%;
+    min-height: 5rem;
+    margin: 1rem;
+    border-radius: 8px;
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+
+.todo-checkbox{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    align-content: center;
+    justify-self: center;
+    align-self: center;
+    padding-top: 4px;
+}
+
+.strikethrough{
+    text-decoration: line-through;
+}
+
+.todo-checkbox input[type="checkbox"]{
+    transform: scale(1.75);
+    accent-color: var(--highlight-blue);
+}
+
+.todo-title{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 7;
+    font-size: 1.2rem;
+    align-content: center;
+}
+
+.todo-date{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 7;
+    grid-column-end: 9;
+    font-weight: bold;
+
+    align-content: center;
+    justify-self: center;
+    align-self: center;
+}
+
+.todo-priority{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 9;
+    grid-column-end: 10;
+    border-radius: 50%;
+    background-color: greenyellow;
+    width: 16px;
+    height: 16px;
+    justify-self: center;
+    align-self: center;
+}
+
+.todo-delete{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 10;
+    grid-column-end: 11;
+
+    align-content: center;
+    justify-self: center;
+    align-self: center;
+}
+
+.todo-delete svg:hover{
+    transform: scale(1.2);
+    fill: var(--primary-blue);
+    stroke: var(--primary-blue);
+}
+
+.todo-description{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 11;
+    align-content: center;
+    padding: 1rem;
+}
+
+.footer{
+    background-color: var(--highlight-blue);
+    width: 100%;
+    color: white;
+    height: 1.5rem;
+    font-size: 14px;
+    margin-top: 5px;
+    border-top: 2px solid white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-hyperlink{
+    margin-left: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer svg{
+    margin-top: 2px;
+    margin: 2px;
+}
+
+.footer a{
+    color: white;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+.footer a:hover{
+    color: var(--light-orange);
+}

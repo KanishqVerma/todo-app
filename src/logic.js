@@ -1,18 +1,20 @@
 'use strict'
 
-//example todo object: todo {id (using cryptID): 123hasdjasjd123ad, title: 'do abc', description: "This is how you do that", due: 30th March 2026, priority: High, status: unchecked}
-//example project object: project {id (using cryptID): 123hasdjasjd123ad, title: 'do abc'}
-
 class Project{
-    constructor(name){
+    constructor(name, description){
         this.id = crypto.randomUUID();
         this.name = name;
+        this.description = description;
     }
 
     #todoArray = [];
 
     changeName(name){
         this.name = name;
+    }
+
+    changeDescription(description){
+        this.description = description;
     }
 
     addTodo(todoTask) {
@@ -26,7 +28,7 @@ class Project{
     }
 
     readTodo() {
-        return this.#todoArray.splice();
+        return [...this.#todoArray];
     }
 }
 
@@ -61,20 +63,69 @@ class ToDo{
     }
 }
 
-function todoController(){
+export function todoController(){
     const projectArray = [];
+    const defaultProjectId = [];
 
-    const addProject = function(project){
-        projectArray.add(project);
+    const addProject = function(projectName, projectDescription){
+        projectArray.push(new Project(projectName, projectDescription));
     };
 
     const readProject = function(){
-        return projectArray.splice();
+        return [...projectArray];
     };
     
     const deleteProject = function(deleteId){
-        projectArray = projectArray.filter((project) => project.id !== deleteId);
+        const index = projectArray.findIndex((project) => project.id === deleteId);
+        
+        if (index === -1){
+            return;
+        }
+
+        if (defaultProjectId.includes(deleteId)){
+            throw("Attempt to delete a default project");
+        }
+
+        projectArray.splice(index, 1);
+        if (deleteId === currentProjectId && projectArray.length !== 0){
+            setCurrentProjectId(projectArray[0].id);
+        }
     };
 
-    
+    const getCurrentProject = function(){
+        const index = projectArray.findIndex((project) => project.id === currentProjectId);
+        
+        if (index !== -1){
+            return projectArray[index];
+        } else throw("-1 index at getCurrentProject")
+    }
+
+    const getTodoFromCurrentProject = function(){
+        const currentProject = getCurrentProject();
+        for (let todo of currentProject){
+            console.log(todo);
+        }
+    }
+
+    const setCurrentProjectId = function(id){
+        currentProjectId = id;
+    }
+
+    addProject("Today", "Do this today");
+    addProject("This Week", "Finish by the end of the week");
+    addProject("This Month", "To be completed by the end of the month");
+    addProject("This Year", "Yearly evaluation here");
+    defaultProjectId.push(projectArray[0].id);
+    defaultProjectId.push(projectArray[1].id);
+    defaultProjectId.push(projectArray[2].id);
+    defaultProjectId.push(projectArray[3].id);
+
+    let currentProjectId;
+
+    setCurrentProjectId(projectArray[0].id);
+
+    return {addProject, readProject, deleteProject, getCurrentProject, setCurrentProjectId, getTodoFromCurrentProject};
 };
+
+
+
