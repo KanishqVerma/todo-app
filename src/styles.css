@@ -111,6 +111,10 @@ body{
     align-items: center;
 }
 
+.project-description{
+    padding: 2rem 2rem 1rem 2rem;
+}
+
 .main-content-card{
     background-color: rgb(40, 38, 38);
     width: 95%;
@@ -156,8 +160,8 @@ body{
 .todo-date{
     grid-row-start: 1;
     grid-row-end: 2;
-    grid-column-start: 7;
-    grid-column-end: 9;
+    grid-column-start: 6;
+    grid-column-end: 8;
     font-weight: bold;
 
     align-content: center;
@@ -168,14 +172,29 @@ body{
 .todo-priority{
     grid-row-start: 1;
     grid-row-end: 2;
-    grid-column-start: 9;
-    grid-column-end: 10;
+    grid-column-start: 8;
+    grid-column-end: 9;
     border-radius: 50%;
     background-color: greenyellow;
     width: 16px;
     height: 16px;
     justify-self: center;
     align-self: center;
+}
+
+.todo-edit{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 9;
+    grid-column-end: 10;
+    justify-self: center;
+    align-self: center;
+}
+
+.todo-edit svg:hover{
+    color: var(--primary-blue);
+    stroke: var(--primary-blue);
+    transform: scale(1.2);
 }
 
 .todo-delete{
