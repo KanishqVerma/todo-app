@@ -71,6 +71,10 @@ export function todoController(){
         projectArray.push(new Project(projectName, projectDescription));
     };
 
+    const returnProjectArray = function(){
+        return projectArray.slice();
+    }
+
     const readProject = function(){
         return [...projectArray];
     };
@@ -124,7 +128,7 @@ export function todoController(){
 
     setCurrentProjectId(projectArray[0].id);
 
-    return {addProject, readProject, deleteProject, getCurrentProject, setCurrentProjectId, getTodoFromCurrentProject};
+    return {addProject, readProject, deleteProject, getCurrentProject, setCurrentProjectId, getTodoFromCurrentProject, returnProjectArray};
 };
 
 

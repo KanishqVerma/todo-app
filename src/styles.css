@@ -48,6 +48,37 @@ body{
     flex: 1;
 }
 
+.main-content-title{
+    display: flex;
+    align-items: center;
+}
+
+.edit-project{
+    background-color: #299d7c;
+    margin-left: 2rem;
+}
+
+.delete-project{
+    background-color: rgba(255, 0, 0, 0.656);
+    margin-left: 2rem;
+}
+
+.edit-project, .delete-project{
+    width: 9rem;
+    height: 2rem;
+    border-radius: 9999px;
+    color: white;
+}
+
+.main-content-title p{
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.main-content-title .add-todo-button{
+    margin-right: 2rem;
+}
+
 .sidebar-title, .main-content-title{
     padding: 0.6rem;
     background-color: #1d4a85;
@@ -58,8 +89,17 @@ body{
     align-items: center;
 }
 
-.sidebar-title h2, .main-content-title h2{
-    width: 80%;
+.sidebar-title h2{
+    width: 70%;
+}
+
+.main-content-title{
+    justify-content: flex-start;
+}
+
+.main-content-title h2{ 
+    margin-left: 6rem;
+    margin-right: 6rem;
 }
 
 .sidebar-title button:hover, .main-content-title button:hover{
@@ -258,4 +298,85 @@ body{
 
 .footer a:hover{
     color: var(--light-orange);
+}
+
+.project-dialog{
+    height: 30%;
+    width: 30%; 
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: auto;
+}
+
+.project-form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-form > div{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dialog-project-button-div{
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.project-dialog input[type="text"]{
+    flex: 1;
+    border-radius: 4px;
+    height: 28px;
+    padding: 1rem 0.5rem;
+}
+
+.project-dialog textarea{
+    flex: 1;
+    min-height: 80px;
+    border-radius: 4px;
+    padding: 0.5rem 0.5rem;
+}
+
+.project-dialog:backdrop{
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.project-dialog{
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-add-project{
+    width: 3.8rem;
+    background-color: #299d7c;
+    margin-left: 2rem;
+    color: white;
+    border-radius: 9999px;
+    height: 2rem;
+}
+
+.dialog-cancel-project{
+    width: 3.8rem;
+    background-color: rgba(255, 0, 0, 0.656);
+    margin-left: 2rem;
+    color: white;
+    border-radius: 9999px;
+    height: 2rem;
+}
+
+.dialog-add-project:hover{
+    background-color: #106f54;
+}
+
+.dialog-cancel-project:hover{
+    background-color: rgba(255, 0, 0, 0.938);
+}
+
+.dialog-add-project:active, .dialog-cancel-project:active{
+    background-color: #000000;
+    color: white;
 }

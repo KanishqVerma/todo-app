@@ -14,7 +14,7 @@
         <div class="sidebar">
             <div class="sidebar-title">
                 <h2>Projects:</h2>
-                <button class="add-button">+</button>
+                <button class="add-button add-project-button">+</button>
             </div>
             <div class="project-list">
                 <ul>
@@ -28,8 +28,14 @@
         <div class="main-content">
             <div class="main-content-title">
                 <h2>[Project Name]</h2>
+                <button class="edit-project">
+                    Edit Project
+                </button>
+                <button class="delete-project">
+                    Delete Project
+                </button>
                 <p>add to-do</p>
-                <button class="add-button">+</button>
+                <button class="add-button add-todo-button">+</button>
             </div>
             <div class="main-content-card-container">
                 <p class="project-description">
@@ -93,5 +99,43 @@
             </div>
         </a>
     </div>
+
+    <dialog class="project-dialog">
+        <div>
+            <form method="dialog" class="project-form">
+                <div>
+                    <label for="dialog-project-title">Name: </label>
+                    <input type="text" placeholder="Enter name of your project:" required id="dialog-project-title">    
+                </div>
+                <div>
+                    <label for="dialog-project-description">Description: </label>
+                    <textarea placeholder="Enter description of your project:" id="dialog-project-description"></textarea>
+                </div>
+                <div class="dialog-project-button-div">
+                    <button type="submit" class="dialog-add-project">Add</button>
+                    <button type="button" class="dialog-cancel-project">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog class="todo-dialog">
+        <div>
+            <form method="dialog" class="todo-form">
+                <div>
+                    <label for="dialog-form-title">Name: </label>
+                    <input type="text" placeholder="Enter title of your todo:" required id="dialog-form-title">    
+                </div>
+                <div>
+                    <label for="dialog-todo-description">Description: </label>
+                    <textarea placeholder="Enter description of your todo:" id="dialog-todo-description"></textarea>
+                </div>
+                <div class="dialog-todo-button-div">
+                    <button class="dialog-add-todo">Add</button>
+                    <button class="dialog-cancel-todo">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
 </body>
 </html>
