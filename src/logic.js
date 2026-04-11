@@ -115,10 +115,10 @@ export function todoController(){
         currentProjectId = id;
     }
 
-    addProject("Today", "Do this today");
-    addProject("This Week", "Finish by the end of the week");
-    addProject("This Month", "To be completed by the end of the month");
-    addProject("This Year", "Yearly evaluation here");
+    addProject("Today", "Do this today.");
+    addProject("This Week", "Finish by the end of the week.");
+    addProject("This Month", "To be completed by the end of the month.");
+    addProject("This Year", "Yearly evaluation here.");
     defaultProjectId.push(projectArray[0].id);
     defaultProjectId.push(projectArray[1].id);
     defaultProjectId.push(projectArray[2].id);
