@@ -1,12 +1,9 @@
 'use strict'
 
 export function userInterface(controller){
-    const projectList = document.querySelector(".project-list ul");
-    
     function renderProjects(){
         const projectArray = controller.returnProjectArray();
         const currentProject = controller.getCurrentProject();
-        
         projectList.innerHTML = "";
         
         projectArray.forEach((project) => {
@@ -37,7 +34,7 @@ export function userInterface(controller){
         
     }
 
-
+    const projectList = document.querySelector(".project-list ul");
     projectList.addEventListener("click", (e) => {
         const clickedLi = e.target.closest("li" );
         if (!clickedLi){
@@ -48,6 +45,52 @@ export function userInterface(controller){
         controller.setCurrentProjectId(id);
         renderProjects();
     });
+
+    let isEditing = false;
+    const editProjectButton = document.querySelector(".edit-project");
+    const deleteProjectButton = document.querySelector(".delete-project");
+    editProjectButton.addEventListener("click", () => {
+        const editProjectDialog = document.querySelector(".project-dialog");
+        const cancelButton = document.querySelector(".dialog-cancel-project");
+        const form = document.querySelector(".project-form");
+        isEditing = true;
+        editProjectDialog.showModal();
+
+        cancelButton.onclick = () => editProjectDialog.close();
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+
+            const title = document.querySelector("#dialog-project-title").value;
+            const description = document.querySelector("#dialog-project-description").value;
+            const currentProject = controller.getCurrentProject();
+            if (isEditing) {
+                currentProject.changeName(title);
+                currentProject.changeDescription(description);
+            } else {
+                controller.addProject(title, description);
+            }
+            isEditing = false;
+            form.reset();
+            editProjectDialog.close();
+            renderProjects();
+        };
+
+    });
+
+    deleteProjectButton.addEventListener("click", () => {
+        const currentProject = controller.getCurrentProject();
+        const projectArray = controller.returnProjectArray();
+        let flag = true;
+        for (let i = 0; i <= 3; i++){
+            if (projectArray[i].id === currentProject.id){
+                alert("Can't delete default projects");
+                return;
+            }
+        };
+        controller.deleteProject(currentProject.id);
+        renderProjects();
+    })
 
 
 
@@ -60,7 +103,7 @@ export function userInterface(controller){
         
         cancelButton.onclick = () => projectDialog.close();
 
-        form.addEventListener("submit", (e) => {
+        form.onsubmit = (e) => {
             e.preventDefault();
 
             const title = document.querySelector("#dialog-project-title").value;
@@ -73,7 +116,7 @@ export function userInterface(controller){
 
 
             renderProjects();
-        });
+        };
     }
 
     const addProjectButton = document.querySelector(".add-project-button");
@@ -81,3 +124,11 @@ export function userInterface(controller){
     
     renderProjects();
 }
+
+
+// 1) Add and style a dialog box for adding todo's
+// 2) Make todos appear dynamically
+// 3) Check out date fns to better store date
+// 4) Make edit button work on todos
+// 5) Make delete button work on todos
+// 6) On clicking the checkbox, a strikethrough should appear for checked projects.
