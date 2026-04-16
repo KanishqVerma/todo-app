@@ -36,7 +36,7 @@
             </div>
             <div class="main-content-card-container">
                 <p class="project-description">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore sed quis laboriosam dolor. Odit reiciendis, deserunt labore qui aliquid rerum repudiandae officia atque aspernatur pariatur?
+                    <!--Dynamic Rendering-->
                 </p>
                 <div class="main-content-card">
                     <div class="todo-checkbox">
@@ -120,16 +120,29 @@
         <div>
             <form method="dialog" class="todo-form">
                 <div>
-                    <label for="dialog-form-title">Name: </label>
-                    <input type="text" placeholder="Enter title of your todo:" required id="dialog-form-title">    
+                    <label for="dialog-todo-title">Name: </label>
+                    <input type="text" placeholder="Enter title of your todo:" required id="dialog-todo-title">    
                 </div>
                 <div>
                     <label for="dialog-todo-description">Description: </label>
-                    <textarea placeholder="Enter description of your todo:" id="dialog-todo-description"></textarea>
+                    <textarea placeholder="Enter description of your todo:" id="dialog-todo-description" required></textarea>
+                </div>
+                <div>
+                    <label for="dialog-todo-date">Deadline: </label>
+                    <input type="date" id="dialog-todo-date" required>
+                </div>
+                <div>
+                    <label for="dialog-todo-priority"></label>
+                    <select name="priority" id="dialog-todo-priority" required>
+                        <option value="" disabled selected hidden>Choose priority...</option>
+                        <option value="high">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
                 </div>
                 <div class="dialog-todo-button-div">
-                    <button class="dialog-add-todo">Add</button>
-                    <button class="dialog-cancel-todo">Cancel</button>
+                    <button type="submit" class="dialog-add-todo">Add</button>
+                    <button type="button" class="dialog-cancel-todo">Cancel</button>
                 </div>
             </form>
         </div>

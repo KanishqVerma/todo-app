@@ -119,14 +119,42 @@ export function userInterface(controller){
         };
     }
 
+    function addTodoDialog(){
+        const todoDialog = document.querySelector(".todo-dialog");
+        const cancelButton = document.querySelector(".dialog-cancel-todo");
+        const form = document.querySelector(".todo-form");
+        const currentProject = controller.getCurrentProject();
+
+        todoDialog.showModal();
+        cancelButton.onclick = () => todoDialog.close();
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+
+            const title = document.querySelector(".dialog-todo-title").value;
+            const description = document.querySelector(".dialog-todo-description").value;
+            const dueDate = document.querySelector(".dialog-todo-date").value;
+            const priority = document.querySelector(".dialog-todo-priority");
+
+            currentProject.addTodo(title, description, dueDate, priority);
+
+            form.reset()
+            todoDialog.close();
+            renderProjectTodo();
+        }
+    }
+
     const addProjectButton = document.querySelector(".add-project-button");
     addProjectButton.addEventListener("click", addProjectDialog);
+
+    const addTodoButton = document.querySelector(".add-todo-button");
+    addTodoButton.addEventListener("click", addTodoDialog);
     
     renderProjects();
 }
 
 
-// 1) Add and style a dialog box for adding todo's
+
 // 2) Make todos appear dynamically
 // 3) Check out date fns to better store date
 // 4) Make edit button work on todos

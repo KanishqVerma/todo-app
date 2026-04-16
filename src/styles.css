@@ -390,3 +390,92 @@ body{
 .active-project{
     color: var(--primary-blue)
 }
+
+.todo-dialog{
+    height: 45%;
+    width: 30%; 
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: auto;
+}
+
+.todo-form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.todo-form > div{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dialog-todo-button-div{
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.todo-dialog input[type="text"]{
+    flex: 1;
+    border-radius: 4px;
+    height: 28px;
+    padding: 1rem 0.5rem;
+}
+
+.todo-dialog textarea{
+    flex: 1;
+    min-height: 80px;
+    border-radius: 4px;
+    padding: 0.5rem 0.5rem;
+}
+
+.todo-dialog:backdrop{
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.todo-dialog{
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-add-todo{
+    width: 3.8rem;
+    background-color: #299d7c;
+    margin-left: 2rem;
+    color: white;
+    border-radius: 9999px;
+    height: 2rem;
+}
+
+.dialog-cancel-todo{
+    width: 3.8rem;
+    background-color: rgba(255, 0, 0, 0.656);
+    margin-left: 2rem;
+    color: white;
+    border-radius: 9999px;
+    height: 2rem;
+}
+
+.dialog-add-todo:hover{
+    background-color: #106f54;
+}
+
+.dialog-cancel-todo:hover{
+    background-color: rgba(255, 0, 0, 0.938);
+}
+
+.dialog-add-todo:active, .dialog-cancel-todo:active{
+    background-color: #000000;
+    color: white;
+}
+
+
+.todo-dialog input[type="text"]{
+    flex: 1;
+    border-radius: 4px;
+    height: 28px;
+    padding: 1rem 0.5rem;
+}

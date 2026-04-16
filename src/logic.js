@@ -17,8 +17,8 @@ class Project{
         this.description = description;
     }
 
-    addTodo(todoTask) {
-        this.#todoArray.push(todoTask);
+    addTodo(todoTitle, todoDescription, todoDueDate, todoPriority) {
+        this.#todoArray.push(new ToDo(todoTitle, todoDescription, todoDueDate, todoPriority));
     }
 
     deleteTodo(id) {
