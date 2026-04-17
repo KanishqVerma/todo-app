@@ -7,7 +7,7 @@ class Project{
         this.description = description;
     }
 
-    #todoArray = [];
+    todoArray = [];
 
     changeName(name){
         this.name = name;
@@ -18,17 +18,17 @@ class Project{
     }
 
     addTodo(todoTitle, todoDescription, todoDueDate, todoPriority) {
-        this.#todoArray.push(new ToDo(todoTitle, todoDescription, todoDueDate, todoPriority));
+        this.todoArray.push(new ToDo(todoTitle, todoDescription, todoDueDate, todoPriority));
     }
 
     deleteTodo(id) {
-        this.#todoArray = this.#todoArray.filter((todoItem) => {
+        this.todoArray = this.todoArray.filter((todoItem) => {
             return todoItem.id !== id;
         });
     }
 
     readTodo() {
-        return [...this.#todoArray];
+        return [...this.todoArray];
     }
 }
 
@@ -69,6 +69,7 @@ export function todoController(){
 
     const addProject = function(projectName, projectDescription){
         projectArray.push(new Project(projectName, projectDescription));
+        save();
     };
 
     const returnProjectArray = function(){
@@ -94,11 +95,11 @@ export function todoController(){
         if (deleteId === currentProjectId && projectArray.length !== 0){
             setCurrentProjectId(projectArray[0].id);
         }
+        save();
     };
 
     const getCurrentProject = function(){
         const index = projectArray.findIndex((project) => project.id === currentProjectId);
-        
         if (index !== -1){
             return projectArray[index];
         } else throw("-1 index at getCurrentProject")
@@ -113,22 +114,66 @@ export function todoController(){
 
     const setCurrentProjectId = function(id){
         currentProjectId = id;
+        save();
     }
-
-    addProject("Today", "Do this today.");
-    addProject("This Week", "Finish by the end of the week.");
-    addProject("This Month", "To be completed by the end of the month.");
-    addProject("This Year", "Yearly evaluation here.");
-    defaultProjectId.push(projectArray[0].id);
-    defaultProjectId.push(projectArray[1].id);
-    defaultProjectId.push(projectArray[2].id);
-    defaultProjectId.push(projectArray[3].id);
 
     let currentProjectId;
 
-    setCurrentProjectId(projectArray[0].id);
+    function save(){
+        localStorage.setItem("projects", JSON.stringify(projectArray));
+        localStorage.setItem("currentProjectId", currentProjectId);
+    }
 
-    return {addProject, readProject, deleteProject, getCurrentProject, setCurrentProjectId, getTodoFromCurrentProject, returnProjectArray};
+    function createDefaultProjects(){
+        const p1 = new Project("Today", "Do this today.");
+        const p2 = new Project("This Week", "Finish by the end of the week.");
+        const p3 = new Project("This Month", "To be completed by the end of the month.");
+        const p4 = new Project("This Year", "Yearly evaluation here.");
+
+        projectArray.push(p1, p2, p3, p4);
+
+        defaultProjectId.push(p1.id, p2.id, p3.id, p4.id);
+    }
+
+    function load(saveData){
+        const parsed = JSON.parse(saveData);
+
+        parsed.forEach((projObj) => {
+            const project = new Project(projObj.name, projObj.description);
+            project.id = projObj.id;
+
+            if (projObj.todoArray){
+                projObj.todoArray.forEach((todoObj) => {
+                    const todo = new ToDo(todoObj.name, todoObj.description, todoObj.dueDate, todoObj.priority);
+                    todo.id = todoObj.id;
+                    todo.checked = todoObj.checked;
+                    
+                    project.todoArray.push(todo);
+                })
+            }
+            projectArray.push(project);
+        });
+
+        const savedId = localStorage.getItem("currentProjectId");
+        if (savedId){
+            currentProjectId = savedId;
+        } else {
+            currentProjectId = projectArray[0].id;
+        }
+    }
+
+    const saveData = localStorage.getItem("projects");
+    if (saveData){
+        load(saveData);
+    } else{
+        createDefaultProjects();
+    }
+    if (!currentProjectId && projectArray.length > 0){
+        currentProjectId = projectArray[0].id;
+        save();
+    }
+
+    return {addProject, readProject, deleteProject, getCurrentProject, setCurrentProjectId, getTodoFromCurrentProject, returnProjectArray, save};
 };
 
 

@@ -47,6 +47,7 @@ export function userInterface(controller){
             inputCheckbox.type = "checkbox";
             inputCheckbox.addEventListener("change", () => {
                 todo.changeStatus();
+                controller.save();
                 renderProjectTodo();
             });
             inputCheckbox.checked = todo.checked;
@@ -66,7 +67,6 @@ export function userInterface(controller){
 
             const todoPriorityDiv = document.createElement("div");
             todoPriorityDiv.classList.add("todo-priority");
-            console.log(todo.priority);
             switch(todo.priority){
                 case "high":
                     todoPriorityDiv.classList.add("priority-high");
@@ -104,6 +104,7 @@ export function userInterface(controller){
                     todo.changeDescription(newDescription);
                     todo.changeDueDate(newDate);
                     todo.changePriority(newPriority);
+                    controller.save();
 
                     form.reset();
                     dialogBox.close();
@@ -116,6 +117,7 @@ export function userInterface(controller){
             todoDeleteDiv.innerHTML = '<svg fill="currentColor" width="16px" height="16px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M5.755,20.283,4,8H20L18.245,20.283A2,2,0,0,1,16.265,22H7.735A2,2,0,0,1,5.755,20.283ZM21,4H16V3a1,1,0,0,0-1-1H9A1,1,0,0,0,8,3V4H3A1,1,0,0,0,3,6H21a1,1,0,0,0,0-2Z"></path></g></svg>';
             todoDeleteDiv.addEventListener("click", () => {
                 currentProject.deleteTodo(todo.id);
+                controller.save();
                 renderProjectTodo();
             })
 
@@ -236,6 +238,7 @@ export function userInterface(controller){
             const priority = document.querySelector("#dialog-todo-priority").value;
 
             currentProject.addTodo(title, description, dueDate, priority);
+            controller.save();
 
             form.reset()
             todoDialog.close();
