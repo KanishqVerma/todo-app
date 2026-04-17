@@ -221,11 +221,22 @@ body{
     grid-column-start: 8;
     grid-column-end: 9;
     border-radius: 50%;
-    background-color: greenyellow;
     width: 16px;
     height: 16px;
     justify-self: center;
     align-self: center;
+}
+
+.priority-high{
+    background-color: red;
+}
+
+.priority-medium{
+    background-color: yellow;
+}
+
+.priority-low{
+    background-color: green;
 }
 
 .todo-edit{
