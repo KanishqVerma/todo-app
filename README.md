@@ -1,166 +1,179 @@
-#  Webpack Starter Template
+# 📝 do-it.org — Todo App
 
-<p align="center">
-  A clean, minimal, and scalable Webpack setup to kickstart modern JavaScript projects.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Webpack-5-blue?logo=webpack" />
-  <img src="https://img.shields.io/badge/Node.js-Required-green?logo=node.js" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow" />
-</p>
+A fully functional **project-based todo application** built with vanilla JavaScript, HTML, and CSS as part of the Odin Project curriculum.
 
 ---
 
-##  Features
+## 🚀 Features
 
-*  Pre-configured Webpack setup
-*  Webpack Dev Server with live reload
-*  Clean and minimal structure
-*  Organized for scalability
-*  Easy to extend with loaders/plugins
+### 📂 Project Management
+
+* Create new projects
+* Edit project name & description
+* Delete projects (with protected default projects)
+* Switch between projects
+
+### ✅ Todo Management
+
+* Add todos with:
+
+  * Title
+  * Description
+  * Due date
+  * Priority
+* Edit todos
+* Delete todos
+* Mark todos as complete (checkbox toggle)
+
+### 🎨 UI & UX
+
+* Clean sidebar + main content layout
+* Active project highlighting
+* Priority-based visual indicators
+* Strikethrough completed tasks
+
+### 💾 Persistence
+
+* All data stored in **localStorage**
+* Projects and todos persist across page reloads
+* Full **rehydration** of objects on load
 
 ---
 
-##  Project Structure
+## 🧠 Key Concepts Learned
 
-```bash
-webpack-starter-template/
-├── src/
-│   ├── index.js
-│   └── style.css
-├── dist/
-├── package.json
-├── webpack.config.js
-├── .gitignore
-└── README.md
+This project focuses heavily on:
+
+* **Object-Oriented Programming (OOP)**
+* **Separation of concerns**
+
+  * Logic layer (controller)
+  * UI layer (DOM rendering)
+* **State management**
+* **Dynamic DOM rendering**
+* **Event handling & delegation**
+* **localStorage persistence**
+* **Serialization & rehydration**
+
+  * Converting stored JSON back into working class instances
+
+---
+
+## 🏗️ Project Structure
+
+```
+src/
+├── index.js        # Entry point
+├── logic.js        # Application logic (Project, ToDo, controller)
+├── ui.js           # DOM rendering & event handling
+├── styles.css      # Styling
 ```
 
 ---
 
-##  Getting Started
+## ⚙️ How It Works
 
-### Use this template
+### 1. State Management
 
-Click **"Use this template"** on GitHub
-or clone manually:
+All data is managed inside a central controller:
+
+```js
+projectArray → contains all projects
+each Project → contains todoArray
+```
+
+---
+
+### 2. Rendering Flow
+
+```
+User Action → Update Data → Save → Re-render UI
+```
+
+---
+
+### 3. Persistence
+
+Data is saved to localStorage:
+
+```js
+localStorage.setItem("projects", JSON.stringify(projectArray));
+```
+
+On load:
+
+* Data is parsed
+* Rebuilt into `Project` and `ToDo` class instances
+
+---
+
+## 🧩 Challenges Faced
+
+* Managing **state synchronization** between UI and logic
+* Handling **localStorage persistence correctly**
+* Rebuilding class instances (**rehydration**)
+* Avoiding bugs from:
+
+  * undefined IDs
+  * incorrect initialization order
+  * stale or corrupted storage data
+
+---
+
+## 🛠️ Tech Stack
+
+* HTML
+* CSS
+* JavaScript (ES6+)
+* Webpack
+
+---
+
+## 📦 Setup & Installation
 
 ```bash
 git clone <your-repo-url>
-cd webpack-starter-template
-```
-
----
-
-### Install dependencies
-
-```bash
+cd <project-folder>
 npm install
+npm start
 ```
 
 ---
 
-### Start development server
+## 📌 Future Improvements
 
-```bash
-npm run start
-```
-
-* Opens your app in the browser
-* Auto-reloads on file changes
-
----
-
-### Build for production
-
-```bash
-npm run build
-```
-
-* Outputs optimized files in the `dist/` folder
+* Drag & drop todos
+* Filtering (Today / Upcoming / Completed)
+* Better date formatting
+* Animations & transitions
+* Event delegation refactor
+* Backend integration
 
 ---
 
-## Scripts
+## 🙌 Acknowledgements
 
-```json
-"scripts": {
-  "start": "webpack serve --open",
-  "build": "webpack"
-}
-```
+* Built as part of **The Odin Project** curriculum
+* Inspired by modern todo apps and task managers
 
 ---
 
-## How It Works
+## 📷 Preview
 
-| Concept   | Description                         |
-| --------- | ----------------------------------- |
-| Entry     | `src/index.js` — starting point     |
-| Output    | `dist/main.js` — bundled file       |
-| Mode      | Development / Production            |
-| DevServer | Serves app locally with live reload |
+*(Add screenshots here if you want)*
 
 ---
 
-## Customization
+## ✨ Final Thoughts
 
-You can extend this setup with:
+This project marks a transition from:
 
-*  CSS / Sass loaders
-*  Asset modules (images, fonts)
-*  HTML Webpack Plugin
-*  Code splitting
-*  Separate dev/prod configs
+> “manipulating the DOM”
 
----
+to:
 
-##  Best Practices
-
-*  Do not commit `node_modules/`
-*  Do not commit `dist/` (unless deploying static builds)
-*  Keep dependencies minimal
-*  Keep configs readable
+> **building a state-driven application**
 
 ---
 
-##  Usage
-
-1. Click **"Use this template"**
-2. Create a new repository
-3. Run:
-
-   ```bash
-   npm install && npm run start
-   ```
-4. Start building 
-
----
-
-##  Roadmap (Optional Improvements)
-
-* [ ] Add `html-webpack-plugin`
-* [ ] Add CSS loaders
-* [ ] Split dev & prod configs
-* [ ] Add ESLint + Prettier
-* [ ] Add TypeScript support
-
----
-
-## Contributing
-
-Feel free to fork, improve, and submit a PR.
-
----
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-## Philosophy
-
-> **Clone → Install → Start → Build**
-
-Simple, fast, and production-ready.
+Made with 💻 and a lot of debugging.
