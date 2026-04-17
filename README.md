@@ -1,6 +1,6 @@
 # 📝 do-it.org — Todo App
 
-A fully functional **project-based todo application** built with vanilla JavaScript, HTML, and CSS as part of the Odin Project curriculum.
+A fully functional **project-based todo application** built with vanilla JavaScript, HTML, and CSS.
 
 ---
 
@@ -139,41 +139,3 @@ npm start
 ```
 
 ---
-
-## 📌 Future Improvements
-
-* Drag & drop todos
-* Filtering (Today / Upcoming / Completed)
-* Better date formatting
-* Animations & transitions
-* Event delegation refactor
-* Backend integration
-
----
-
-## 🙌 Acknowledgements
-
-* Built as part of **The Odin Project** curriculum
-* Inspired by modern todo apps and task managers
-
----
-
-## 📷 Preview
-
-*(Add screenshots here if you want)*
-
----
-
-## ✨ Final Thoughts
-
-This project marks a transition from:
-
-> “manipulating the DOM”
-
-to:
-
-> **building a state-driven application**
-
----
-
-Made with 💻 and a lot of debugging.
