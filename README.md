@@ -8,35 +8,36 @@ A fully functional **project-based todo application** built with vanilla JavaScr
 
 ### 📂 Project Management
 
-* Create new projects
-* Edit project name & description
-* Delete projects (with protected default projects)
-* Switch between projects
+- Create new projects
+- Edit project name & description
+- Delete projects (with protected default projects)
+- Switch between projects
 
 ### ✅ Todo Management
 
-* Add todos with:
+- Add todos with:
 
-  * Title
-  * Description
-  * Due date
-  * Priority
-* Edit todos
-* Delete todos
-* Mark todos as complete (checkbox toggle)
+  - Title
+  - Description
+  - Due date
+  - Priority
+
+- Edit todos
+- Delete todos
+- Mark todos as complete (checkbox toggle)
 
 ### 🎨 UI & UX
 
-* Clean sidebar + main content layout
-* Active project highlighting
-* Priority-based visual indicators
-* Strikethrough completed tasks
+- Clean sidebar + main content layout
+- Active project highlighting
+- Priority-based visual indicators
+- Strikethrough completed tasks
 
 ### 💾 Persistence
 
-* All data stored in **localStorage**
-* Projects and todos persist across page reloads
-* Full **rehydration** of objects on load
+- All data stored in **localStorage**
+- Projects and todos persist across page reloads
+- Full **rehydration** of objects on load
 
 ---
 
@@ -44,18 +45,19 @@ A fully functional **project-based todo application** built with vanilla JavaScr
 
 This project focuses heavily on:
 
-* **Object-Oriented Programming (OOP)**
-* **Separation of concerns**
+- **Object-Oriented Programming (OOP)**
+- **Separation of concerns**
 
-  * Logic layer (controller)
-  * UI layer (DOM rendering)
-* **State management**
-* **Dynamic DOM rendering**
-* **Event handling & delegation**
-* **localStorage persistence**
-* **Serialization & rehydration**
+  - Logic layer (controller)
+  - UI layer (DOM rendering)
 
-  * Converting stored JSON back into working class instances
+- **State management**
+- **Dynamic DOM rendering**
+- **Event handling & delegation**
+- **localStorage persistence**
+- **Serialization & rehydration**
+
+  - Converting stored JSON back into working class instances
 
 ---
 
@@ -102,30 +104,30 @@ localStorage.setItem("projects", JSON.stringify(projectArray));
 
 On load:
 
-* Data is parsed
-* Rebuilt into `Project` and `ToDo` class instances
+- Data is parsed
+- Rebuilt into `Project` and `ToDo` class instances
 
 ---
 
 ## 🧩 Challenges Faced
 
-* Managing **state synchronization** between UI and logic
-* Handling **localStorage persistence correctly**
-* Rebuilding class instances (**rehydration**)
-* Avoiding bugs from:
+- Managing **state synchronization** between UI and logic
+- Handling **localStorage persistence correctly**
+- Rebuilding class instances (**rehydration**)
+- Avoiding bugs from:
 
-  * undefined IDs
-  * incorrect initialization order
-  * stale or corrupted storage data
+  - undefined IDs
+  - incorrect initialization order
+  - stale or corrupted storage data
 
 ---
 
 ## 🛠️ Tech Stack
 
-* HTML
-* CSS
-* JavaScript (ES6+)
-* Webpack
+- HTML
+- CSS
+- JavaScript (ES6+)
+- Webpack
 
 ---
 
@@ -142,25 +144,25 @@ npm start
 
 ## 📌 Future Improvements
 
-* Drag & drop todos
-* Filtering (Today / Upcoming / Completed)
-* Better date formatting
-* Animations & transitions
-* Event delegation refactor
-* Backend integration
+- Drag & drop todos
+- Filtering (Today / Upcoming / Completed)
+- Better date formatting
+- Animations & transitions
+- Event delegation refactor
+- Backend integration
 
 ---
 
 ## 🙌 Acknowledgements
 
-* Built as part of **The Odin Project** curriculum
-* Inspired by modern todo apps and task managers
+- Built as part of **The Odin Project** curriculum
+- Inspired by modern todo apps and task managers
 
 ---
 
 ## 📷 Preview
 
-*(Add screenshots here if you want)*
+_(Add screenshots here if you want)_
 
 ---
 
