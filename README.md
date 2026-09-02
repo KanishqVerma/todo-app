@@ -1,6 +1,6 @@
 # 📝 do-it.org — Todo App
 
-A fully functional **project-based todo application** built with vanilla JavaScript, HTML, and CSS as part of the Odin Project curriculum.
+A fully functional **project-based todo application** built with vanilla JavaScript, HTML, and CSS.
 
 ---
 
